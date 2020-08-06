@@ -1,8 +1,8 @@
 {
-  "name": "node-setup",
+  "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Diego Fernandes <diego.schell.f@gmail.com>",
+  "author": "Samara Ferreira <ferreirasamara.sf@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
