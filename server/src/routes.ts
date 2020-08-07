@@ -9,7 +9,7 @@ const upload = multer(uploadConfig)
 
 const teacherController = new TeacherController()
 
-// routes.get('/teacher', teacherController.index)
+routes.get('/teachers', teacherController.index)
 routes.post('/teachers', upload.single('avatar'), teacherController.create)
 
 export default routes

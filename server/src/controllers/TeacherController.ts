@@ -5,7 +5,11 @@ import convertStringToArray from '../utils/convertStringToArray'
 
 export default class TeachersController {
   async index (request: Request, response: Response) {
+    const { subject } = request.query
 
+    const teachers = await Teacher.find({ subjects: subject })
+
+    return response.json(teachers)
   }
 
   async create (request: Request, response: Response) {
