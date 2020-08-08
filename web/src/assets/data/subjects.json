@@ -1,0 +1,54 @@
+[
+  {
+    "value": "Artes",
+    "label": "Artes"
+  },
+  {
+    "value": "Biologia",
+    "label": "Biologia"
+  },
+  {
+    "value": "Espanhol",
+    "label": "Espanhol"
+  },
+  {
+    "value": "Elétrica",
+    "label": "Elétrica"
+  },
+  {
+    "value": "Física",
+    "label": "Física"
+  },
+  {
+    "value": "Geografia",
+    "label": "Geografia"
+  },
+  {
+    "value": "História",
+    "label": "História"
+  },
+  {
+    "value": "Inglês",
+    "label": "Inglês"
+  },
+  {
+    "value": "Matemática",
+    "label": "Matemática"
+  },
+  {
+    "value": "Português",
+    "label": "Português"
+  },
+  {
+    "value": "Programação",
+    "label": "Programação"
+  },
+  {
+    "value": "Química",
+    "label": "Química"
+  },
+  {
+    "value": "Redação",
+    "label": "Redação"
+  }
+]
