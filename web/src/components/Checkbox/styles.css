@@ -1,0 +1,8 @@
+.checkbox-block {
+  margin-top: 8px;
+}
+
+.checkbox-block input {
+  border-radius: 5px;
+  margin-right: 5px;
+}
