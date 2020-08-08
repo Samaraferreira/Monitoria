@@ -23,9 +23,6 @@ export default class TeachersController {
       topics
     } = request.body
 
-    const arraySubjects = convertStringToArray(subjects)
-    const arrayTopics = convertStringToArray(topics)
-
     try {
       await Teacher.create({
         name,
@@ -33,8 +30,8 @@ export default class TeachersController {
         avatar: filename,
         whatsapp,
         bio,
-        subjects: arraySubjects,
-        topics: arrayTopics
+        subjects,
+        topics
       })
 
       return response.status(201).send()
