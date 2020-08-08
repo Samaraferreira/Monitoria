@@ -14,7 +14,7 @@ const Landing: React.FC = () => {
       <p>Precisando de ajuda nos estudos? Encontre um monitor ou se torne um.</p>
 
       <div className="buttons-container">
-        <Link to="/monitores" className="study">
+        <Link to="/study" className="study">
           <img src={studyIcon} alt="Estudar" />
           Encontrar monitor
         </Link>
