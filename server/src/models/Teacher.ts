@@ -25,7 +25,7 @@ const TeacherSchema: Schema = new Schema({
 })
 
 TeacherSchema.virtual('avatar_url').get(function () {
-  return `http://localhost:3333/files/${this.avatar}`
+  return `${process.env.SERVER_URL}/files/${this.avatar}`
 })
 
 export default mongoose.model<ITeacher>('Teacher', TeacherSchema)
