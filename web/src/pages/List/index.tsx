@@ -10,22 +10,20 @@ import './styles.css';
 
 const List: React.FC = () => {
   const [subject, setSubject] = useState('Programação');
-  const [loading, setLoading] = useState(false);
   const [teachers, setTeachers] = useState<ITeacher[]>([]);
 
   useEffect(() => {
-    (async () => {
-      setLoading(true);
-
+    async function load(): Promise<void> {
       const response = await api.get('teachers', {
         params: {
           subject,
         },
       });
 
-      setLoading(false);
       setTeachers(response.data);
-    })();
+    }
+
+    load();
   }, [subject]);
 
   return (
@@ -96,15 +94,11 @@ const List: React.FC = () => {
       </Header>
 
       <main>
-        {loading ? (
-          <span>Carregando...</span>
-        ) : (
+        {teachers.length ? (
           teachers.map((teacher) => (
             <TeacherItem key={teacher._id} teacher={teacher} />
           ))
-        )}
-
-        {!loading && !teachers.length && (
+        ) : (
           <label>
             Ops! Ainda não temos monitores cadastrados nessa matéria.
           </label>
