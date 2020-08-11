@@ -1,0 +1,46 @@
+#page-success {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: var(--color-primary);
+  background-image: url('../../assets/images/success-background.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#page-success h1 {
+  margin: 2.4rem 0;
+  color: var(--color-title-in-primary);
+}
+
+#page-success p {
+  margin: 0 1.4rem;
+  text-align: center;
+  color: var(--color-text-in-primary);
+}
+
+#page-success a {
+  width: 20rem;
+  height: 5.6rem;
+  background: var(--color-secondary);
+  color: var(--color-button-text);
+  border: 0;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  font: 700 1.6rem Archivo;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-decoration: none;
+  margin-top: 7.8rem;
+  transition: 0.2s;
+}
+
+#page-success a:hover {
+  background: var(--color-secondary-dark);
+}
