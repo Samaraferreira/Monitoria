@@ -17,7 +17,8 @@
   --color-button-text: #FFFFFF;
   --color-box-base: #FFFFFF;
   --color-box-footer: #FAFAFC;
-  --color-background-topics: #8257e5c4;
+  --color-background-topics: #9264ff;
+  --color-background-landing: rgb(245, 245, 245);
 
   font-size: 60%;
 }
