@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 
 import Teacher from '@models/Teacher'
+
 import convertStringToArray from '../utils/convertStringToArray'
 
 export default class TeachersController {
@@ -23,6 +24,9 @@ export default class TeachersController {
       topics
     } = request.body
 
+    const convertedSubjects = convertStringToArray(subjects)
+    const convertedTopics = convertStringToArray(topics)
+
     try {
       await Teacher.create({
         name,
@@ -30,8 +34,8 @@ export default class TeachersController {
         avatar: filename,
         whatsapp,
         bio,
-        subjects,
-        topics
+        subjects: convertedSubjects,
+        topics: convertedTopics
       })
 
       return response.status(201).send()
