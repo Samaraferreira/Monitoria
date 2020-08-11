@@ -1,61 +1,98 @@
-import React, { useCallback, useState, FormEvent } from 'react';
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+  FormEvent,
+  ChangeEvent,
+} from 'react';
 import { useHistory } from 'react-router-dom';
+
+import api from '../../services/api';
 
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
-import Select from '../../components/Select';
 import Checkbox from '../../components/Checkbox';
 
+import avatarImage from '../../assets/images/avatar.png';
 import warningIcon from '../../assets/images/icons/warning.svg';
 import subjects from '../../assets/data/subjects.json';
 
 import './styles.css';
-import api from '../../services/api';
 
 const TeacherForm: React.FC = () => {
   const [name, setName] = useState('');
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState<File>();
   const [whatsapp, setWhatsapp] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
-  // const [subject, setSubject] = useState(subjects);
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
   const [topics, setTopics] = useState('');
+  const [messageBtn, setMessageBtn] = useState('');
 
   const history = useHistory();
 
-  function handleSelectedSubjects(value: string) {
-    if (selectedSubjects.includes(value)) {
-      const updatedSubjects = selectedSubjects.filter(item => item !== value);
-      setSelectedSubjects(updatedSubjects);
-    } else {
-      setSelectedSubjects(older => [...older, value]);
-    }
-  }
+  const handleSelectedSubjects = useCallback(
+    (value: string) => {
+      if (selectedSubjects.includes(value)) {
+        const updatedSubjects = selectedSubjects.filter(
+          (item) => item !== value,
+        );
+        setSelectedSubjects(updatedSubjects);
+      } else {
+        setSelectedSubjects((oldValue) => [...oldValue, value]);
+      }
+    },
+    [selectedSubjects],
+  );
 
-  const handleCreateClass = async (event: FormEvent) => {
+  const preview = useMemo(() => {
+    return avatar ? URL.createObjectURL(avatar) : avatarImage;
+  }, [avatar]);
+
+  const handleUploadAvatar = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      if (event.target.files) {
+        setAvatar(event.target.files[0]);
+      }
+    },
+    [],
+  );
+
+  const handleCreateTeacher = useCallback(
+    async (data: FormData): Promise<void> => {
+      try {
+        await api.post('teachers', data);
+
+        setMessageBtn('');
+        history.push('/success');
+      } catch {
+        setMessageBtn('Erro no cadastro!');
+      }
+    },
+    [history],
+  );
+
+  const handleSubmit = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
 
-    try {
-      const data = {
-        name,
-        avatar,
-        whatsapp,
-        bio,
-        subject: selectedSubjects,
-        topics
-      };
+    setMessageBtn('Enviando...');
 
-      console.log(data);
+    if (name && email && avatar && whatsapp && bio && selectedSubjects) {
+      const data = new FormData();
 
-      // api
-      //   .post('teachers', data)
-      //   .then(() => alert('Cadastro realizado com sucesso!'));
+      const convertedSubjects = selectedSubjects.toString();
+      data.append('name', name);
+      data.append('email', email);
+      data.append('avatar', avatar);
+      data.append('whatsapp', whatsapp);
+      data.append('bio', bio);
+      data.append('subjects', convertedSubjects);
+      data.append('topics', topics);
 
-      history.push('/');
-    } catch {
-      alert('Erro no cadastro!');
+      handleCreateTeacher(data);
+    } else {
+      setMessageBtn('Verifique seus dados');
     }
   };
 
@@ -67,27 +104,39 @@ const TeacherForm: React.FC = () => {
       />
 
       <main>
-        <form onSubmit={handleCreateClass}>
+        <form onSubmit={handleSubmit}>
           <fieldset>
             <legend>Seus dados</legend>
+
+            <div id="input-file">
+              <span
+                className="avatar-image"
+                style={{ backgroundImage: `url(${preview})` }}
+              />
+              <input
+                id="file"
+                name="avatar"
+                placeholder="Adicionar avatar"
+                type="file"
+                onChange={handleUploadAvatar}
+              />
+              <label className="upload-label" htmlFor="file">
+                Adicionar avatar
+              </label>
+            </div>
 
             <Input
               name="name"
               label="Nome completo"
+              placeholder="Seu nome aqui"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
 
             <Input
-              name="avatar"
-              label="Avatar"
-              value={avatar}
-              onChange={(e) => setAvatar(e.target.value)}
-            />
-
-            <Input
               name="email"
               label="E-mail"
+              placeholder="Seu e-mail aqui"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -95,6 +144,7 @@ const TeacherForm: React.FC = () => {
             <Input
               name="whatsapp"
               label="Whatsapp"
+              placeholder="Passe o zapzap"
               value={whatsapp}
               onChange={(e) => setWhatsapp(e.target.value)}
             />
@@ -102,23 +152,27 @@ const TeacherForm: React.FC = () => {
             <Textarea
               name="bio"
               label="Biografia"
+              placeholder="Mostre que você é legal"
               value={bio}
               onChange={(e) => setBio(e.target.value)}
             />
           </fieldset>
 
           <fieldset>
-            <legend>Escolha a matéria <span>Pode ser mais que uma</span></legend>
+            <legend>
+              Escolha a matéria <span>Pode ser mais que uma</span>
+            </legend>
 
             <div className="group-checkbox">
-              {subjects.map(subject => (
+              {subjects.map((subject) => (
                 <Checkbox
+                  key={subject.value}
                   name={subject.label}
                   value={subject.value}
                   label={subject.label}
                   onChange={() => handleSelectedSubjects(subject.value)}
-                />)
-              )}
+                />
+              ))}
             </div>
 
             <Input
@@ -136,7 +190,8 @@ const TeacherForm: React.FC = () => {
               Importante! <br />
               Preencha todos os campos obrigatórios
             </p>
-            <button type="submit">Salvar cadastro</button>
+
+            <button type="submit">{messageBtn || 'Salvar cadastro'}</button>
           </footer>
         </form>
       </main>

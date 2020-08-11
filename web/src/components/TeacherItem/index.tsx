@@ -4,49 +4,54 @@ import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 
 import './styles.css';
 
-const TeacherItem: React.FC = () => {
+export interface ITeacher {
+  _id: string;
+  name: string;
+  email: string;
+  avatar_url: string;
+  whatsapp: string;
+  bio: string;
+  subjects: Array<string>;
+  topics: Array<string>;
+}
+
+interface TeacherItemProps {
+  teacher: ITeacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
   return (
     <article className="teacher-item">
       <header>
-        <img
-          src="https://avatars0.githubusercontent.com/u/51099911?s=460&u=98a67ad897a2cd5658e5b128401ef549634ae66b&v=4"
-          alt="Samara"
-        />
-        <div>
-          <strong>Samara Ferreira</strong>
-          <span>Programação web</span>
+        <img src={teacher.avatar_url} alt={teacher.name} />
+        <div className="infos">
+          <strong>{teacher.name}</strong>
+          <div className="subjects">
+            {teacher.subjects.map((subject) => (
+              <span key={subject}>{subject} |</span>
+            ))}
+          </div>
         </div>
       </header>
 
-      <p>
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-      </p>
+      <p>{teacher.bio}</p>
 
-      <p>
-        E-mail: ferreirasamara.sf@gmail.com
-      </p>
+      <p>E-mail: {teacher.email}</p>
 
       <div className="topics">
-        <span>
-          HTML
-        </span>
-        <span>
-          CSS
-        </span>
-        <span>
-          JavaScript
-        </span>
+        {teacher.topics?.map((topic) => (
+          <span key={topic}>{topic}</span>
+        ))}
       </div>
 
       <footer>
         <p>
-          Toda monitoria é
-          <strong>GRATUITA</strong>
+          Toda monitoria é<strong>GRATUITA</strong>
         </p>
-        <button type="button">
+        <a target="_blanck" href={`https://wa.me/${teacher.whatsapp}`}>
           <img src={whatsappIcon} alt="Whatsapp" />
           Entrar em contato
-        </button>
+        </a>
       </footer>
     </article>
   );

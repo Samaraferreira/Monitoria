@@ -9,14 +9,16 @@ import './styles.css';
 
 const Landing: React.FC = () => {
   return (
-    <div id="page-landing">
-      <h1>Monitoria</h1>
-      <p>Precisando de ajuda nos estudos? Encontre um monitor ou se torne um.</p>
+    <main id="page-landing">
+      <h1>Monitoria.</h1>
+      <p>
+        Precisando de ajuda nos estudos? Encontre um monitor ou se torne um.
+      </p>
 
       <div className="buttons-container">
         <Link to="/study" className="study">
           <img src={studyIcon} alt="Estudar" />
-          Encontrar monitor
+          Procurar monitor
         </Link>
         <Link to="/give-classes" className="give-classes">
           <img src={giveClassesIcon} alt="Dar aulas" />
@@ -25,11 +27,14 @@ const Landing: React.FC = () => {
       </div>
 
       <span className="footer">
-        Colabore com o projeto no <a href="https://github.com/Samaraferreira/Monitoria" target="_blanck">GitHub</a>
+        Colabore com o projeto no{' '}
+        <a href="https://github.com/Samaraferreira/Monitoria" target="_blanck">
+          GitHub
+        </a>
         <img src={purpleHeartIcon} alt="Coração roxo" />
       </span>
-    </div>
+    </main>
   );
-}
+};
 
 export default Landing;

@@ -1,18 +1,32 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from '../../components/Header';
-import TeacherItem from '../../components/TeacherItem';
+import TeacherItem, { ITeacher } from '../../components/TeacherItem';
 import Select from '../../components/Select';
-
-import subjects from '../../assets/data/subjects.json';
 
 import api from '../../services/api';
 
 import './styles.css';
 
-
 const List: React.FC = () => {
-  const [subject, setSubject] = useState('');
+  const [subject, setSubject] = useState('Programação');
+  const [loading, setLoading] = useState(false);
+  const [teachers, setTeachers] = useState<ITeacher[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+
+      const response = await api.get('teachers', {
+        params: {
+          subject,
+        },
+      });
+
+      setLoading(false);
+      setTeachers(response.data);
+    })();
+  }, [subject]);
 
   return (
     <div id="page-teacher-list" className="container">
@@ -20,18 +34,81 @@ const List: React.FC = () => {
         <form id="search-teachers">
           <Select
             name="subject"
-            label="Matéria"
-            options={subjects}
+            label="Buscar por Matéria"
+            options={[
+              {
+                value: 'Artes',
+                label: 'Artes',
+              },
+              {
+                value: 'Biologia',
+                label: 'Biologia',
+              },
+              {
+                value: 'Espanhol',
+                label: 'Espanhol',
+              },
+              {
+                value: 'Elétrica',
+                label: 'Elétrica',
+              },
+              {
+                value: 'Física',
+                label: 'Física',
+              },
+              {
+                value: 'Geografia',
+                label: 'Geografia',
+              },
+              {
+                value: 'História',
+                label: 'História',
+              },
+              {
+                value: 'Inglês',
+                label: 'Inglês',
+              },
+              {
+                value: 'Matemática',
+                label: 'Matemática',
+              },
+              {
+                value: 'Português',
+                label: 'Português',
+              },
+              {
+                value: 'Programação',
+                label: 'Programação',
+              },
+              {
+                value: 'Química',
+                label: 'Química',
+              },
+              {
+                value: 'Redação',
+                label: 'Redação',
+              },
+            ]}
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
-          <button type="submit">Buscar</button>
         </form>
       </Header>
 
       <main>
-        <TeacherItem />
-        <TeacherItem />
+        {loading ? (
+          <span>Carregando...</span>
+        ) : (
+          teachers.map((teacher) => (
+            <TeacherItem key={teacher._id} teacher={teacher} />
+          ))
+        )}
+
+        {!loading && !teachers.length && (
+          <label>
+            Ops! Ainda não temos monitores cadastrados nessa matéria.
+          </label>
+        )}
       </main>
     </div>
   );

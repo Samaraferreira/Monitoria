@@ -12,13 +12,13 @@
   width: 100%;
   max-width: 74rem;
   border-radius: 0.8rem;
-  margin: -3.2rem auto 3.2rem;
+  margin: -3.2rem auto 0;
   padding-top: 6.4rem;
   overflow: hidden;
 }
 
 #page-teacher-form main label {
-  color: var(--color-text-complement);
+  color: var(--color-text-base);
 }
 
 #page-teacher-form main fieldset {
@@ -54,6 +54,7 @@
 #page-teacher-form main fieldset .group-checkbox {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 2.4rem;
 }
 
 #page-teacher-form main footer {
@@ -134,4 +135,36 @@
     width: 20rem;
     margin-top: 0;
   }
+}
+
+#input-file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+}
+
+#input-file .avatar-image {
+  background-size: cover;
+  width: 14rem;
+  height: 14rem;
+  border: 1px dashed #ddd;
+  border-radius: 50%;
+}
+
+#input-file input {
+  width: 0.1px;
+  visibility: hidden;
+  z-index: -1;
+}
+
+#input-file .upload-label {
+  font-weight: 500;
+  padding: 0.8rem;
+  margin-left: 0.8rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  color: var(--color-button-text) !important;
+  background-color: var(--color-primary-lighter);
 }

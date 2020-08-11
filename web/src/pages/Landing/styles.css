@@ -1,15 +1,22 @@
 #page-landing {
+  width: 100vw;
+  height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: stretch;
+  justify-content: center;
   padding: 0 2rem;
+
+  color: var(--color-text-base);
+  background: var(--color-background-landing);
 }
 
 #page-landing h1 {
   line-height: 3.2rem;
-  font-size: 4rem;
+  font-size: 5rem;
   margin-bottom: 4rem;
+  color: var(--color-text-title);
 }
 
 #page-landing p {
@@ -21,14 +28,14 @@
 }
 
 .buttons-container {
-  /* display: flex;
-  justify-content: center; */
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 8rem 0;
 }
 
 .buttons-container a {
-  width: 100%;
+  width: 30rem;
   height: 8rem;
   border-radius: 0.8rem;
   font: 700 2rem Archivo;
@@ -44,7 +51,6 @@
 }
 
 .buttons-container a:first-child {
-  margin-right: 1.6rem;
   margin-bottom: 1rem;
 }
 
@@ -55,7 +61,7 @@
 }
 
 .buttons-container a.study {
-  background: var(--color-primary-lighter);
+  background: var(--color-primary-dark);
 }
 
 .buttons-container a.give-classes {
@@ -63,9 +69,21 @@
 }
 
 .buttons-container a.study:hover {
-  background: var(--color-primary-light);
+  background: var(--color-primary-darker);
 }
 
 .buttons-container a.give-classes:hover {
   background: var(--color-secondary-dark);
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--color-primary-dark);
+}
+
+@media (min-width: 700px) {
+  .buttons-container a:first-child {
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+  }
 }

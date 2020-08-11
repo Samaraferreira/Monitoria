@@ -18,20 +18,27 @@
   border-radius: 50%;
 }
 
-.teacher-item header div {
+.teacher-item header .infos {
+  width: calc(100%-8rem);
   margin-left: 2.4rem;
 }
 
-.teacher-item header div strong {
+.teacher-item header .subjects {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.teacher-item header .infos strong {
   font: 700 2.4rem Archivo;
   display: block;
   color: var(--color-text-title);
 }
 
-.teacher-item header div span {
+.teacher-item header .subjects span {
   font-size: 1.6rem;
   display: block;
   margin-top: 0.4rem;
+  margin-right: 0.6rem;
 }
 
 .teacher-item > p {
@@ -44,7 +51,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0 2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .teacher-item .topics span {
@@ -71,7 +78,7 @@
   display: block;
 }
 
-.teacher-item footer button {
+.teacher-item footer a {
   width: 20rem;
   height: 5.6rem;
   background: var(--color-secondary);
@@ -83,10 +90,11 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  text-decoration: none;
   transition: 0.2s;
 }
 
-.teacher-item footer button:hover {
+.teacher-item footer a:hover {
   background: var(--color-secondary-dark);
 }
 
@@ -102,16 +110,16 @@
 
   .teacher-item footer p strong {
     display: initial;
-    margin-left: 1.6rem;
+    margin-left: 1rem;
   }
 
-  .teacher-item footer button {
+  .teacher-item footer a {
     width: 24.5rem;
     font-size: 1.6rem;
     justify-content: center;
   }
 
-  .teacher-item footer button img {
+  .teacher-item footer a img {
     margin-right: 1.6rem;
   }
 }

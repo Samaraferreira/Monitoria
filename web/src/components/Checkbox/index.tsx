@@ -13,6 +13,6 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, ...rest }) => {
       <label htmlFor={label}>{label}</label>
     </div>
   );
-}
+};
 
 export default Checkbox;
