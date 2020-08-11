@@ -22,6 +22,10 @@
   font: 1.6rem Archivo;
 }
 
+.input-block input::placeholder {
+  color: var(--color-text-complement);
+}
+
 .input-block:focus-within::after {
   width: calc(100%-3.2rem);
   height: 2px;

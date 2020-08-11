@@ -24,6 +24,10 @@
   font: 1.6rem Archivo;
 }
 
+.textarea-block textarea::placeholder {
+  color: var(--color-text-complement);
+}
+
 .textarea-block:focus-within::after {
   width: calc(100%-3.2rem);
   height: 2px;
