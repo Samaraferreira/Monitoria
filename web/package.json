@@ -8,7 +8,6 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "styled-components": "^5.1.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -41,7 +40,6 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
-    "@types/styled-components": "^5.1.1",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
     "eslint": "6.6.0",
