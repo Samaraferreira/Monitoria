@@ -1,5 +1,6 @@
 import express from 'express'
 import multer from 'multer'
+
 import uploadConfig from '@config/upload'
 
 import TeacherController from './controllers/TeacherController'

@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 
 import Teacher from '@models/Teacher'
 
+import uploadFile from '../config/storage'
 import convertStringToArray from '../utils/convertStringToArray'
 
 export default class TeachersController {
@@ -24,10 +25,12 @@ export default class TeachersController {
       topics
     } = request.body
 
-    const convertedSubjects = convertStringToArray(subjects)
-    const convertedTopics = convertStringToArray(topics)
-
     try {
+      uploadFile(request.file)
+
+      const convertedSubjects = convertStringToArray(subjects)
+      const convertedTopics = convertStringToArray(topics)
+
       await Teacher.create({
         name,
         email,

@@ -8,6 +8,10 @@ export interface ITeacher extends Document {
   bio: string;
   subjects: Array<string>;
   topics?: Array<string>;
+  createdAt: {
+    type: Date,
+    default: Date
+  }
 }
 
 const TeacherSchema: Schema = new Schema({
@@ -17,7 +21,11 @@ const TeacherSchema: Schema = new Schema({
   whatsapp: { type: String, required: true },
   bio: { type: String, required: true },
   subjects: { type: Array, required: true },
-  topics: { type: Array }
+  topics: { type: Array },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 }, {
   toJSON: {
     virtuals: true
@@ -25,7 +33,7 @@ const TeacherSchema: Schema = new Schema({
 })
 
 TeacherSchema.virtual('avatar_url').get(function () {
-  return `${process.env.SERVER_URL}/files/${this.avatar}`
+  return `${process.env.CLOUD_PUBLIC_URL}/${process.env.BUCKET_NAME}/${this.avatar}`
 })
 
 export default mongoose.model<ITeacher>('Teacher', TeacherSchema)
