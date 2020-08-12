@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import TeacherItem, { ITeacher } from '../../components/TeacherItem';
 import Select from '../../components/Select';
+import Loading from '../../components/Loading';
 
 import api from '../../services/api';
 
@@ -10,10 +11,13 @@ import './styles.css';
 
 const List: React.FC = () => {
   const [subject, setSubject] = useState('Programação');
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(false);
   const [teachers, setTeachers] = useState<ITeacher[]>([]);
 
   useEffect(() => {
     async function load(): Promise<void> {
+      setLoading(true);
       const response = await api.get('teachers', {
         params: {
           subject,
@@ -21,6 +25,7 @@ const List: React.FC = () => {
       });
 
       setTeachers(response.data);
+      setLoading(false);
     }
 
     load();
@@ -94,15 +99,20 @@ const List: React.FC = () => {
       </Header>
 
       <main>
-        {teachers.length ? (
-          teachers.map((teacher) => (
-            <TeacherItem key={teacher._id} teacher={teacher} />
-          ))
-        ) : (
-          <label>
-            Ops! Ainda não temos monitores cadastrados nessa matéria.
-          </label>
-        )}
+        {loading
+          ? <Loading />
+          : (
+            teachers.length ? (
+              teachers.map((teacher) => (
+                <TeacherItem key={teacher._id} teacher={teacher} />
+              ))
+            ) : (
+              <label>
+                Ops! Ainda não temos monitores cadastrados nessa matéria.
+              </label>
+            )
+          )
+        }
       </main>
     </div>
   );
