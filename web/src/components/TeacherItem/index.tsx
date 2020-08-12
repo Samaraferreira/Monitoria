@@ -28,7 +28,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
           <strong>{teacher.name}</strong>
           <div className="subjects">
             {teacher.subjects.map((subject) => (
-              <span key={subject}>{subject} |</span>
+              <span key={subject}>{subject}</span>
             ))}
           </div>
         </div>

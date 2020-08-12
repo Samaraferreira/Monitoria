@@ -10,7 +10,7 @@ const Success: React.FC = () => {
     <div id="page-success">
       <img src={successIcon} alt="Sucesso" />
       <h1>Cadastro salvo!</h1>
-      <p>Tudo certo, seu cadastro está na nossa lista de monitores.</p>
+      <p>Tudo certo! Você está na nossa lista de monitores.</p>
       <Link to="/study">Acessar lista</Link>
     </div>
   );

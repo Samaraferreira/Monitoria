@@ -118,6 +118,7 @@ const TeacherForm: React.FC = () => {
                 name="avatar"
                 placeholder="Adicionar avatar"
                 type="file"
+                accept=".png, .jpeg, .jpg"
                 onChange={handleUploadAvatar}
               />
               <label className="upload-label" htmlFor="file">

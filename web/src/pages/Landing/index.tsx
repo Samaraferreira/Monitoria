@@ -10,15 +10,15 @@ import './styles.css';
 const Landing: React.FC = () => {
   return (
     <main id="page-landing">
-      <h1>Monitoria.</h1>
+      <h1>Monitoria</h1>
       <p>
-        Precisando de ajuda nos estudos? Encontre um monitor ou se torne um.
+        Precisando de ajuda nos estudos? Encontre um monitor.
       </p>
 
       <div className="buttons-container">
         <Link to="/study" className="study">
           <img src={studyIcon} alt="Estudar" />
-          Procurar monitor
+          Encontrar monitor
         </Link>
         <Link to="/give-classes" className="give-classes">
           <img src={giveClassesIcon} alt="Dar aulas" />
