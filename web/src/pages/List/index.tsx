@@ -12,7 +12,6 @@ import './styles.css';
 const List: React.FC = () => {
   const [subject, setSubject] = useState('Programação');
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(false);
   const [teachers, setTeachers] = useState<ITeacher[]>([]);
 
   useEffect(() => {
