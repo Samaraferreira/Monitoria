@@ -1,6 +1,6 @@
 <p align="center">
   <img src=".github/logo.png" alt="Logo" width="400">
-  <h4 align="center">Site para conectar alunos que precisam de ajuda nos estudos com alunos que querem ajudar sendo monitores.</h4>
+  <h4 align="center">Sistema para conectar alunos que precisam de monitoria com monitores voluntários.</h4>
   <h4 align="center">
     <a href="https://monitoria.vercel.app/">Acesse o site aqui</a>
   </h4>
