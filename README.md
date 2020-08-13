@@ -1,14 +1,13 @@
 <p align="center">
   <img src=".github/logo.png" alt="Logo" width="400">
-  <h2 align="center">Site para conectar alunos que precisam de ajuda nos estudos com alunos que querem ajudar sendo monitores.</h2>
-
-  <h2 align="center">
+  <h4 align="center">Sistema para conectar alunos que precisam de monitoria com monitores voluntários.</h4>
+  <h4 align="center">
     <a href="https://monitoria.vercel.app/">Acesse o site aqui</a>
-  </h2>
+  </h4>
 </p>
 <br>
-<h1> Tecnologias utilizadas </h1>
-<h2>Back-end</h2>
+<h2> Tecnologias utilizadas </h2>
+<h4>Back-end</h4>
 <ul>
   <li>TypeScript</li>
   <li>Node.js</li>
@@ -18,7 +17,7 @@
   <li>Multer</li>
 </ul>
 
-<h2>Front-end web</h2>
+<h4>Front-end web</h4>
 <ul>
   <li>TypeScript</li>
   <li>ReactJS</li>
