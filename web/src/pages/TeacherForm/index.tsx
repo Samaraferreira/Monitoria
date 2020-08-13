@@ -129,7 +129,7 @@ const TeacherForm: React.FC = () => {
             <Input
               name="name"
               label="Nome completo"
-              placeholder="Seu nome aqui"
+              placeholder="Seu nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -137,7 +137,7 @@ const TeacherForm: React.FC = () => {
             <Input
               name="email"
               label="E-mail"
-              placeholder="Seu e-mail aqui"
+              placeholder="Seu e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -145,7 +145,7 @@ const TeacherForm: React.FC = () => {
             <Input
               name="whatsapp"
               label="Whatsapp"
-              placeholder="Passe o zapzap"
+              placeholder="Seu número do whatsapp"
               value={whatsapp}
               onChange={(e) => setWhatsapp(e.target.value)}
             />
