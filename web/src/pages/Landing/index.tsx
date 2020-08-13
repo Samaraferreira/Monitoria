@@ -5,12 +5,14 @@ import studyIcon from '../../assets/images/icons/study.svg';
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg';
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
 
+import Logo from '../../assets/images/logo-img.svg';
+
 import './styles.css';
 
 const Landing: React.FC = () => {
   return (
     <main id="page-landing">
-      <h1>Monitoria</h1>
+      <img src={Logo} />
       <p>
         Precisando de ajuda nos estudos? Encontre um monitor.
       </p>

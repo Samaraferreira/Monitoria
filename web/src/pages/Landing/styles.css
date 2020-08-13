@@ -12,12 +12,9 @@
   padding: 0 4rem;
 }
 
-#page-landing h1 {
-  line-height: 4.8rem;
-  font-size: 6rem;
-  font-weight: 700;
+#page-landing > img {
+  max-width: 30rem;
   margin-bottom: 4rem;
-  color: var(--color-text-title);
 }
 
 #page-landing p {
