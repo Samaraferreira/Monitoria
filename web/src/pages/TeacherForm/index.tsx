@@ -82,10 +82,13 @@ const TeacherForm: React.FC = () => {
       const data = new FormData();
 
       const convertedSubjects = selectedSubjects.toString();
+
+      const newWhatsapp = '55' + whatsapp;
+
       data.append('name', name);
       data.append('email', email);
       data.append('avatar', avatar);
-      data.append('whatsapp', whatsapp);
+      data.append('whatsapp', newWhatsapp);
       data.append('bio', bio);
       data.append('subjects', convertedSubjects);
       data.append('topics', topics);
@@ -145,7 +148,7 @@ const TeacherForm: React.FC = () => {
             <Input
               name="whatsapp"
               label="Whatsapp"
-              placeholder="Seu número do whatsapp"
+              placeholder="DDD+número (Ex.: 82912345678)"
               value={whatsapp}
               onChange={(e) => setWhatsapp(e.target.value)}
             />
